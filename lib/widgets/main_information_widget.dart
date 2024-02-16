@@ -5,10 +5,23 @@ import 'package:flutter/material.dart';
 
 class MainInformation extends StatelessWidget {
     const MainInformation({Key? key}) : super(key: key);
+var client = WeatherData();
+var data;
 
+info () async {
+var position = await GetPosition();
+data = await client.getData(position.latitude, position.longitude);
+return
+}
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.if(context).size;
+return Scaffold(
+body: FlutterBuilder(
+future: info(),
+builder: ((context, snapshot) {
+return Container( 
     return Column(
       children: [
         SafeArea(
@@ -43,9 +56,9 @@ class MainInformation extends StatelessWidget {
                     color: Colors.white.withOpacity(0.7),
                     fontSize: 35,
                   ),
-                    Image.asset(
-                      'assets/',
-                      width: size.width * 0.4,
+                    Image.network('https:${dara?.icon}', 
+                                  width: size.width * 0.33,
+                                  fit: BoxFit.fill),
                     ),
                     Text(
                       'Sunny', 
