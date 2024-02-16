@@ -79,13 +79,13 @@ class MainInformation extends StatelessWidget {
                   '${data?.wind} km/h',
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.7),
-                    fontSize: 75,
+                    fontSize: 20,
                   ),
                                   Text(
                   'wind',
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.7),
-                    fontSize: 75,
+                    fontSize: 20,
                   ),
                                     Expanded(
                               child: 
@@ -98,13 +98,13 @@ class MainInformation extends StatelessWidget {
                   '${data?.humidity}',
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.7),
-                    fontSize: 75,
+                    fontSize: 20,
                   ),
                                   Text(
                   'Humidity',
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.7),
-                    fontSize: 75,
+                    fontSize: 20,
                   ),
                                  Expanded(
                               child: 
@@ -117,16 +117,116 @@ class MainInformation extends StatelessWidget {
                   '${data?.windDir}',
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.7),
-                    fontSize: 75,
+                    fontSize: 20,
                   ),
                                   Text(
                   'Wind Direction',
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.7),
-                    fontSize: 75,
+                    fontSize: 20,
                   ),   
                               ),
                             ),
+                              Row(
+                                children[
+                                  Expanded(
+                                    child: 
+                                    Column(
+                                      children[
+                                        Text(
+                  '${data?.gust}',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 20,
+                  ),
+                                  Text(
+                  'Gust',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 20,
+                  ),   
+                                    SizeBox(
+                        height: 5,
+                      ),
+                                    Text(
+                 '${data?.pressure} hpa',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 20,
+                  ),
+                                  Text(
+                  'pressure',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 20,
+                  ),   
+                                    Expanded(
+                                    child: 
+                                    Column(
+                                      children[
+                                        Text(
+                  '${data?.uv}',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 20,
+                  ),
+                                  Text(
+                  'UV',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 20,
+                  ),   
+                                    SizeBox(
+                        height: 5,
+                      ),
+                                    Text(
+                 '${data?.pricipe} mm',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 20,
+                  ),
+                                  Text(
+                  'pricipe',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 20,
+                  ),   
+                                    Expanded(
+                                    child: 
+                                    Column(
+                                      children[
+                                        Text(
+                  '${data?.wind} km/h',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 20,
+                  ),
+                                  Text(
+                  'wind',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 20,
+                  ),   
+                                    SizeBox(
+                        height: 5,
+                      ),
+                                    Text(
+                 '${data?.lastUpdate}',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 20,
+                  ),
+                                  Text(
+                  'Last Update',
+                  style: TextStyle(
+                    color: Colors.green.withOpacity(0.7),
+                    fontSize: 20,
+                  ),   
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),  
                           ],
                         ),
                   ),
