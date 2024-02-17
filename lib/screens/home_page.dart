@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           BackgroundApp(),
-          MainInformation(),
+          // MainInformation(),
         ],
       ),
     );
