@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/ui/theme_background.dart';
-import 'package:weather_app/widgets/weather_widget.dart';
+import 'package:weather_app/widgets/main_information_widget.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Stack(
+      body: Column(
         children: [
           BackgroundApp(),
           MainInformation(),
