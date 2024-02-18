@@ -12,6 +12,3 @@ import 'package:flutter/material.dart';
   const double fontSize16 = 16;
   const double fontSize20 = 20;
   const double fontSize40 = 40;
-
-
-

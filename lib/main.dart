@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/screens/get_started.dart';
-import 'package:weather_app/widgets/main_information_widget.dart';
+import 'package:weather_app/ui/theme_background.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   runApp(const MainApp());
 }
 
@@ -14,11 +15,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: GetStarted(),
+      theme: ThemeData(
+        textTheme: GoogleFonts.oxygenTextTheme(
+          Theme.of(context).textTheme,
+          
         ),
+      ),
+      home: const GetStarted(),
     );
   }
 }
