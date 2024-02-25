@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/screens/get_started.dart';
+import 'package:weather_app/screens/home_page.dart';
 import 'package:weather_app/ui/theme_background.dart';
 
 void main() {
@@ -20,10 +21,10 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: GoogleFonts.oxygenTextTheme(
           Theme.of(context).textTheme,
-          
         ),
+        
       ),
-      home: const GetStarted(),
+      home: const HomePage(),
     );
   }
 }

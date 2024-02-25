@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_app/models/weather_models.dart';
 import 'package:weather_app/services/get_location.dart';
 import 'package:weather_app/services/services.dart';
 
@@ -14,68 +15,92 @@ class MainInformation extends StatefulWidget {
 }
 
 class _MainInformationState extends State<MainInformation> {
-  var client = WeatherData();
+  final _cityTextController = TextEditingController();
+  final _dataService = DataService();
 
-  var data;
-
-  info() async {
-    var position = await GetPosition();
-    data = await client.getData(position.latitude, position.longitude);
-    return data;
-  }
+  WeatherResponse? _response;
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Column(
-      children: [ FutureBuilder(
-        future: info(),
-        builder: ((context, snapshot) {
-          return Column(
+    // Size size = MediaQuery.of(context).size;
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Center(
+          child: Column(
             children: [
-              Container(
-                width: MediaQuery.sizeOf(context).width,
-                height: MediaQuery.sizeOf(context).height * 0.6,
-                // padding: const EdgeInsets.only(top: 30),
-                margin: const EdgeInsets.only(right: 10, left: 10, top: 30),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(32),
-                  gradient: const LinearGradient(
-                    colors: [
-                      Color.fromARGB(22, 49, 32, 32),
-                      Color.fromARGB(100, 82, 79, 28),
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    stops: [0.2, 0.85],
-                  ),
-                ),
-                child: Column(
+              const Padding(padding: EdgeInsets.only(top: 30)),
+              if (_response != null)
+                Column(
                   children: [
-                    const Padding(padding: EdgeInsets.only(top: 42)),
+                    const Center(
+                        child: Padding(padding: EdgeInsets.only(top: 70))),
+                    const Padding(padding: EdgeInsets.only(top: 20)),
                     Text(
-                        '${data?.cityName}',
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.7),
-                          fontSize: 25,
-                        ),
+                      dateFormat,
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 255, 255, 255)
+                            .withOpacity(0.8),
+                        fontSize: 12,
                       ),
-                      const Padding(padding: EdgeInsets.only(top: 20)),
-                      Text(
-                        dateFormat,
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.7),
-                          fontSize: 12,
-                        ),
-                      ),
+                    ),
+                    const Padding(padding: EdgeInsets.only(top: 70)),
+                    Image.network(_response!.iconUrl),
+                    Text(
+                      '${_response!.tempInfo.temperature}°',
+                      style: const TextStyle(
+                          fontSize: 40,
+                          color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
+                    Text(
+                      _response!.weatherInfo.description,
+                      style: const TextStyle(
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
                   ],
                 ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: TextField(
+                    style: const TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255)),
+                    controller: _cityTextController,
+                    autofocus: true,
+                    
+                    decoration: const InputDecoration(
+                        labelText: 'City',
+                        labelStyle:
+                            TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                        fillColor: Color.fromARGB(255, 255, 255, 255)),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
+              ElevatedButton(
+                  style: const ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(
+                          Color.fromARGB(255, 255, 255, 255))),
+                  onPressed: _search,
+                  child: const Text(
+                    'Search',
+                    style: TextStyle(color: Color.fromARGB(255, 37, 70, 141)),
+                  )),
             ],
-          );
-        }),
+          ),
+        ),
       ),
-      ],
     );
+  }
+
+  void _search() async {
+    final response = await _dataService.getWeather(_cityTextController.text);
+    // print(response.cityName);
+    // print(response.tempInfo.temperature);
+    // print(response.weatherInfo.description);
+    setState(() => _response = response);
   }
 }

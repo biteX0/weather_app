@@ -1,44 +1,50 @@
-class Weather {
-  var cityName;
-  var icon;
-  var condition;
-  var temp;
-  var wind;
-  var humidity;
-  var windDir;
-  var gust;
-  var uv;
-  var pressure;
-  var pricipe;
-  var lastUpdate;
+class WeatherInfo {
+  final String description;
+  final String icon;
 
-  Weather({
-    required this.cityName,
-    required this.icon,
-    required this.condition,
-    required this.temp,
-    required this.wind,
-    required this.humidity,
-    required this.windDir,
-    required this.gust,
-    required this.uv,
-    required this.pressure,
-    required this.pricipe,
-    required this.lastUpdate,
-  });
+  WeatherInfo({required this.description, required this.icon});
+  factory WeatherInfo.fromJson(Map<String, dynamic> json) {
+    final description = json['description'];
+    final icon = json['icon'];
+    return WeatherInfo(description: description, icon: icon);
+  }
+}
 
-  Weather.fromJson(Map<String, dynamic> json) {
-    cityName = json['location']['name'];
-    icon = json['current']['condition']['icon'];
-    condition = json['current']['condition']['text'];
-    temp = json['current']['temp_c'];
-    wind = json['current']['wind_kph'];
-    humidity = json['current']['humidity'];
-    windDir = json['current']['wind_dir'];
-    gust = json['current']['gust_kph'];
-    uv = json['current']['uv'];
-    pressure = json['current']['pressure_mb'];
-    pricipe = json['current']['precip_mm'];
-    lastUpdate = json['current']['last_updated'];
+class TemperatureInfo {
+  final double temperature;
+
+  TemperatureInfo({required this.temperature});
+
+  factory TemperatureInfo.fromJson(Map<String, dynamic> json) {
+    final temperature = json['temp'];
+    return TemperatureInfo(temperature: temperature);
+  }
+}
+
+class WeatherResponse {
+  final String cityName;
+  final TemperatureInfo tempInfo;
+  final WeatherInfo weatherInfo;
+
+  String get iconUrl{
+    return 'http://openweathermap.org/img/wn/${weatherInfo.icon}@2x.png';
+  }
+
+  WeatherResponse(
+      {required this.cityName,
+      required this.tempInfo,
+      required this.weatherInfo});
+
+  factory WeatherResponse.fromJson(Map<String, dynamic> json) {
+    final cityName = json['name'];
+
+    final tempInfoJson = json['main'];
+    final tempInfo = TemperatureInfo.fromJson(tempInfoJson);
+
+    final weatherInfoJson = json['weather'][0];
+    final weatherInfo = WeatherInfo.fromJson(weatherInfoJson);
+
+    return WeatherResponse(
+        cityName: cityName, tempInfo: tempInfo, weatherInfo: weatherInfo);
   }
 }

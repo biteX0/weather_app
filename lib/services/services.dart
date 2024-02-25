@@ -4,12 +4,20 @@ import 'package:http/http.dart' as http;
 import 'package:weather_app/models/weather_models.dart';
 import 'package:weather_app/ui/constants.dart';
 
-class WeatherData {
-  Future<Weather> getData(var latitude, var longitude) async {
-    var uriCall = Uri.parse(
-        'http://api.weatherapi.com/v1/current.json?key=$apiKey&q=$latitude, $longitude&aqi=no');
-    var response = await http.get(uriCall);
-    var body = jsonDecode(response.body);
-    return Weather.fromJson(body);
+class DataService {
+  Future<WeatherResponse> getWeather(String city) async {
+    final queryParametrs = {
+      'q': city,
+      'appid': apiKey,
+      'units': 'metric'
+    };
+
+    final uri = Uri.https(
+      'api.openweathermap.org', '/data/2.5/weather', queryParametrs);
+      final response = await http.get(uri);
+
+      // print(response.body);
+      final json = jsonDecode(response.body);
+      return WeatherResponse.fromJson(json);
   }
 }
