@@ -5,9 +5,9 @@ import 'package:weather_app/models/weather_response.dart';
 import 'package:weather_app/ui/constants.dart';
 
 class DataService {
-  Future<WeatherResponse> getWeather(String city) async {
+  Future<WeatherResponse> getWeather(String cityName) async {
     final queryParametrs = {
-      'q': city,
+      'q': cityName,
       'appid': apiKey,
       'units': 'metric'
     };

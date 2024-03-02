@@ -7,7 +7,7 @@ var dayInfo = DateTime.now();
 var dateFormat = DateFormat('EEEE, d MMM, yyyy').format(dayInfo);
 
 class MainInformation extends StatefulWidget {
-  const MainInformation({Key? key}) : super(key: key);
+  const MainInformation({super.key});
 
   @override
   State<MainInformation> createState() => _MainInformationState();

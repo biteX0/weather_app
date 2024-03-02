@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/models/weather_response.dart';
+import 'package:weather_app/models/weather_city.dart';
 import 'package:weather_app/services/get_location.dart';
 import 'package:weather_app/ui/constants.dart';
 
@@ -12,7 +12,7 @@ class GeolocationPage extends StatefulWidget {
 
 class _GeolocationPageState extends State<GeolocationPage> {
   final _weatherService = WeatherService(apiKey);
-  WeatherResponse? _response;
+  WeatherCityName? _weatherCityName;
 
  
   @override
@@ -23,28 +23,30 @@ class _GeolocationPageState extends State<GeolocationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.transparent,
-        body: Column(
-          children: [
-            Text(_response!.cityName),
-          ],
+    return Scaffold(
+      // backgroundColor: Colors.transparent,
+        body: Center(
+          child: Column(
+            mainAxisAlignment:MainAxisAlignment.center,
+            children: [
+              Text(_weatherCityName?.cityName ?? 'loading failed'),
+            ],
+          ),
         ),
     );
   }
 
-   _fetchWeather()async {
+   _fetchWeather() async {
     String? cityName = await _weatherService.getCurrentCity();
     
     try {
-      final response = await _weatherService.getWeather(cityName!);
+      final weatherCityName = await _weatherService.getWeather(cityName!);
       setState(() {
-        _response = response;
+        _weatherCityName = weatherCityName;
       });
     }
     catch (dataError) {
-      debugPrint(dataError as String?);
+      debugPrint('error: $dataError');
     }
   }
-
 }
