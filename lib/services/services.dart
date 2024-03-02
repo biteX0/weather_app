@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:weather_app/models/weather_models.dart';
+import 'package:weather_app/models/weather_response.dart';
 import 'package:weather_app/ui/constants.dart';
 
 class DataService {

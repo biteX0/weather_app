@@ -1,32 +1,42 @@
+import 'dart:convert';
+
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
+
+import 'package:weather_app/models/weather_description.dart';
 
 
-Future<Position> GetPosition() async {
-  bool serviceEnabled;
-  LocationPermission permission;
 
+class WeatherService {
+  static const url = "https://api.openweathermap.org/data/2.5/weather";
+  final String apiKey;
 
-  serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  if (!serviceEnabled) {
+  WeatherService(this.apiKey);
 
-    return Future.error('Location services are disabled.');
-  }
+  Future<WeatherDescription> getWeather(String cityName) async {
+    final response = await http.get(Uri.parse('$url?q$cityName&appid=$apiKey&units=metric'));
 
-  permission = await Geolocator.checkPermission();
-  if (permission == LocationPermission.denied) {
-    permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.denied) {
-
-      return Future.error('Location permissions are denied');
+    if (response.statusCode == 200) {
+      return WeatherDescription.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to load weather data');
     }
   }
-  
-  if (permission == LocationPermission.deniedForever) {
 
-    return Future.error(
-      'Location permissions are permanently denied, we cannot request permissions.');
-  } 
+  Future<String> getCurrentCity() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
 
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high);
 
-  return await Geolocator.getCurrentPosition();
+      List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+
+      String? city = placemarks[0].locality;
+
+      return city ?? "";
+  }
 }

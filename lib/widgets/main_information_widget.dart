@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/models/weather_models.dart';
-import 'package:weather_app/services/get_location.dart';
+import 'package:weather_app/models/weather_response.dart';
 import 'package:weather_app/services/services.dart';
 
 var dayInfo = DateTime.now();
@@ -22,7 +21,6 @@ class _MainInformationState extends State<MainInformation> {
 
   @override
   Widget build(BuildContext context) {
-    // Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -30,7 +28,7 @@ class _MainInformationState extends State<MainInformation> {
         body: Center(
           child: Column(
             children: [
-              const Padding(padding: EdgeInsets.only(top: 30)),
+              const SizedBox(height: 30,),
               if (_response != null)
                 Column(
                   children: [
@@ -46,17 +44,18 @@ class _MainInformationState extends State<MainInformation> {
                       ),
                     ),
                     const Padding(padding: EdgeInsets.only(top: 70)),
-                    Image.network(_response!.iconUrl),
+                    
                     Text(
                       '${_response!.tempInfo.temperature}°',
                       style: const TextStyle(
                           fontSize: 40,
                           color: Color.fromARGB(255, 255, 255, 255)),
                     ),
+                    Image.network(_response!.iconUrl),
                     Text(
                       _response!.weatherInfo.description,
                       style: const TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           color: Color.fromARGB(255, 255, 255, 255)),
                     ),
                   ],
@@ -68,9 +67,8 @@ class _MainInformationState extends State<MainInformation> {
                   child: TextField(
                     style: const TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255)),
+                        autofocus: true,
                     controller: _cityTextController,
-                    autofocus: true,
-                    
                     decoration: const InputDecoration(
                         labelText: 'City',
                         labelStyle:
