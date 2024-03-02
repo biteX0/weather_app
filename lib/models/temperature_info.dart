@@ -1,5 +1,5 @@
 class TemperatureInfo {
-  final double temperature;
+  final num temperature;
 
   TemperatureInfo({required this.temperature});
 
