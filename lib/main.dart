@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+<<<<<<< Updated upstream
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/screens/get_started.dart';
 import 'package:weather_app/screens/home_page.dart';
 import 'package:weather_app/ui/theme_background.dart';
+=======
+import 'package:weather_app/screens/home_page.dart';
+import 'package:get/get.dart';
+>>>>>>> Stashed changes
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -16,15 +21,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        textTheme: GoogleFonts.oxygenTextTheme(
-          Theme.of(context).textTheme,
-        ),
-        
-      ),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }

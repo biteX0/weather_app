@@ -5,7 +5,11 @@ import 'package:weather_app/models/weather_models.dart';
 import 'package:weather_app/ui/constants.dart';
 
 class DataService {
+<<<<<<< Updated upstream
   Future<WeatherResponse> getWeather(String city) async {
+=======
+  Future<WeatherDataCurrent> getWeather(String cityName) async {
+>>>>>>> Stashed changes
     final queryParametrs = {
       'q': city,
       'appid': apiKey,
@@ -18,6 +22,6 @@ class DataService {
 
       // print(response.body);
       final json = jsonDecode(response.body);
-      return WeatherResponse.fromJson(json);
+      return WeatherDataCurrent.fromJson(json);
   }
 }
