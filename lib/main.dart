@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-<<<<<<< Updated upstream
-import 'package:google_fonts/google_fonts.dart';
-import 'package:weather_app/screens/get_started.dart';
-import 'package:weather_app/screens/home_page.dart';
-import 'package:weather_app/ui/theme_background.dart';
-=======
 import 'package:weather_app/screens/home_page.dart';
 import 'package:get/get.dart';
->>>>>>> Stashed changes
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(

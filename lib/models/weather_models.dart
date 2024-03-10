@@ -1,11 +1,6 @@
 class WeatherInfo {
-<<<<<<< Updated upstream
   final String description;
   final String icon;
-=======
-  final String? description;
-  final String? icon;
->>>>>>> Stashed changes
 
   WeatherInfo({required this.description, required this.icon});
   factory WeatherInfo.fromJson(Map<String, dynamic> json) {
@@ -15,38 +10,6 @@ class WeatherInfo {
   }
 }
 
-<<<<<<< Updated upstream
-class TemperatureInfo {
-  final double temperature;
-
-  TemperatureInfo({required this.temperature});
-
-  factory TemperatureInfo.fromJson(Map<String, dynamic> json) {
-    final temperature = json['temp'];
-    return TemperatureInfo(temperature: temperature);
-  }
-}
-
-class WeatherResponse {
-  final String cityName;
-  final TemperatureInfo tempInfo;
-  final WeatherInfo weatherInfo;
-
-  String get iconUrl{
-    return 'http://openweathermap.org/img/wn/${weatherInfo.icon}@2x.png';
-  }
-
-  WeatherResponse(
-      {required this.cityName,
-      required this.tempInfo,
-      required this.weatherInfo});
-
-  factory WeatherResponse.fromJson(Map<String, dynamic> json) {
-    final cityName = json['name'];
-
-    final tempInfoJson = json['main'];
-    final tempInfo = TemperatureInfo.fromJson(tempInfoJson);
-=======
 class Main {
   final double? temp;
   final double? feelsLike;
@@ -99,17 +62,10 @@ class WeatherDataCurrent {
   factory WeatherDataCurrent.fromJson(Map<String, dynamic> json) {
     final mainJson = json['main'];
     final main = Main.fromJson(mainJson);
->>>>>>> Stashed changes
 
     final weatherInfoJson = json['weather'][0];
     final weatherInfo = WeatherInfo.fromJson(weatherInfoJson);
 
-<<<<<<< Updated upstream
-    return WeatherResponse(
-        cityName: cityName, tempInfo: tempInfo, weatherInfo: weatherInfo);
-  }
-}
-=======
     final windJson = json['wind'];
     final windSpeed = Wind.fromJson(windJson);
 
@@ -261,4 +217,3 @@ class WeatherDataCurrent {
 //         cityName: cityName, tempInfo: tempInfo, weatherInfo: weatherInfo);
 //   }
 // }
->>>>>>> Stashed changes

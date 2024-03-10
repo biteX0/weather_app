@@ -1,26 +1,4 @@
 import 'package:geolocator/geolocator.dart';
-<<<<<<< Updated upstream
-
-
-Future<Position> GetPosition() async {
-  bool serviceEnabled;
-  LocationPermission permission;
-
-
-  serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  if (!serviceEnabled) {
-
-    return Future.error('Location services are disabled.');
-  }
-
-  permission = await Geolocator.checkPermission();
-  if (permission == LocationPermission.denied) {
-    permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.denied) {
-
-      return Future.error('Location permissions are denied');
-    }
-=======
 import 'package:get/get.dart';
 import 'package:weather_app/models/weather_data.dart';
 import 'package:weather_app/services/fetch_weather.dart';
@@ -83,15 +61,14 @@ class GlobalController extends GetxController {
       // print(_longitude.value);
       
     });
->>>>>>> Stashed changes
   }
   
-  if (permission == LocationPermission.deniedForever) {
+  // if (permission == LocationPermission.deniedForever) {
 
-    return Future.error(
-      'Location permissions are permanently denied, we cannot request permissions.');
-  } 
+  //   return Future.error(
+  //     'Location permissions are permanently denied, we cannot request permissions.');
+  // } 
 
 
-  return await Geolocator.getCurrentPosition();
+  // return await Geolocator.getCurrentPosition();
 }

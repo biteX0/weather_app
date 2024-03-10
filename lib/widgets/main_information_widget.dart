@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/models/weather_models.dart';
-<<<<<<< Updated upstream
-import 'package:weather_app/services/get_location.dart';
-=======
->>>>>>> Stashed changes
 import 'package:weather_app/services/services.dart';
 
 var dayInfo = DateTime.now();
@@ -55,13 +51,8 @@ class _MainInformationState extends State<MainInformation> {
                         fontSize: 12,
                       ),
                     ),
-<<<<<<< Updated upstream
-                    const Padding(padding: EdgeInsets.only(top: 70)),
-                    Image.network(_response!.iconUrl),
-=======
                     const SizedBox(height: 70,),
                     
->>>>>>> Stashed changes
                     Text(
                       '${_response!.main.temp}°',
                       style: const TextStyle(
@@ -76,24 +67,6 @@ class _MainInformationState extends State<MainInformation> {
                     ),
                   ],
                 ),
-<<<<<<< Updated upstream
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: TextField(
-                    style: const TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255)),
-                    controller: _cityTextController,
-                    autofocus: true,
-                    
-                    decoration: const InputDecoration(
-                        labelText: 'City',
-                        labelStyle:
-                            TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
-                        fillColor: Color.fromARGB(255, 255, 255, 255)),
-                    textAlign: TextAlign.center,
-=======
               // Padding(
                 // padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
                 // child: 
@@ -128,7 +101,6 @@ class _MainInformationState extends State<MainInformation> {
                   style: TextStyle(color: Color.fromARGB(255, 37, 70, 141)),
                 )),
                 ],
->>>>>>> Stashed changes
                   ),
             ],
           ),
