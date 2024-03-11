@@ -20,25 +20,26 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Color.fromARGB(101, 48, 67, 95),
       body: SafeArea(
-              child: Obx(() => globalController.checkLoading().isTrue
-                  ? const Center(
-                      child: CircularProgressIndicator(color: Color.fromARGB(178, 255, 255, 255),),
-                    )
-                  : ListView(
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        // const BackgroundApp(),
-                        const SizedBox( height: 20,),
-                        const HeaderWidget(),
-                        CurrentWeatherWidget(
-                                    weatherDataCurrent:
-                                        globalController.getData().getCurrentWeather(),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                        ),
-                      ],
-                    ))),
+          child: Obx(() => globalController.checkLoading().isTrue
+              ? const Center(
+                  child: CircularProgressIndicator(
+                    color: Color.fromARGB(178, 255, 255, 255),
+                  ),
+                )
+              : ListView(
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    // const BackgroundApp(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const HeaderWidget(),
+                    CurrentWeatherWidget(
+                      weatherDataCurrent:
+                          globalController.getData().getCurrentWeather(),
+                    ),
+                  ],
+                ))),
     );
   }
 }

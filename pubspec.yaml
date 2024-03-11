@@ -25,7 +25,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-    - assets/weather/
   
 fonts:
    - family: Oxygen
