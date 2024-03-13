@@ -7,7 +7,7 @@ import 'package:weather_app/widgets/current_waether.dart';
 import 'package:weather_app/widgets/geolocation_widget.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -16,6 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalController globalController =
       Get.put(GlobalController(), permanent: true);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
