@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:weather_app/ui/constants.dart';
+import 'package:weather_app/ui/custom_colors.dart';
 
 class BackgroundApp extends StatefulWidget {
   const BackgroundApp({super.key});
@@ -15,7 +15,7 @@ class BackgroundAppState extends State<BackgroundApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: CustomColors.backgroundColor,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -36,7 +36,7 @@ class BackgroundAppState extends State<BackgroundApp> {
                   width: 280,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    color: secondBackgroundColor,
+                    color: CustomColors.secondBackgroundColor,
                   ),
                 ),
               ),
@@ -47,7 +47,7 @@ class BackgroundAppState extends State<BackgroundApp> {
                   width: 280,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    color: secondBackgroundColor,
+                    color: CustomColors.secondBackgroundColor,
                   ),
                 ),
               ),
@@ -57,7 +57,7 @@ class BackgroundAppState extends State<BackgroundApp> {
                   height: 300,
                   width: 600,
                   decoration: const BoxDecoration(
-                    color: firstBackgroundColor,
+                    color: CustomColors.firstBackgroundColor,
                   ),
                 ),
               ),
