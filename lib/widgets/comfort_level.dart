@@ -17,7 +17,7 @@ class ComfortLevel extends StatelessWidget {
           margin:
               const EdgeInsets.only(top: 1, left: 20, right: 20, bottom: 20),
           child: const Text(
-            'Comfort Level',
+            'Уровень комфорта',
             style:
                 TextStyle(fontSize: fontSize20, color: CustomColors.textColor),
           ),
@@ -36,7 +36,7 @@ class ComfortLevel extends StatelessWidget {
                     infoProperties: InfoProperties(
                       mainLabelStyle: const TextStyle(
                           color: CustomColors.textColor, fontSize: fontSize27),
-                      bottomLabelText: 'Humidity',
+                      bottomLabelText: 'Влажность',
                       bottomLabelStyle: const TextStyle(
                           letterSpacing: 0.1,
                           fontSize: fontSize16,
@@ -60,7 +60,7 @@ class ComfortLevel extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Feels Like:  ',
+                    'Ощущается как  ',
                     style: TextStyle(
                         fontSize: fontSize16,
                         height: 0.8,

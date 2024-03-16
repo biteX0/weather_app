@@ -43,7 +43,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       child: Column(
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 20, right: 20, top: 50),
+            margin: const EdgeInsets.only(left: 20, right: 20),
             alignment: Alignment.topLeft,
             child: Text(city, 
             style: const TextStyle(
@@ -54,13 +54,13 @@ class _HeaderWidgetState extends State<HeaderWidget> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+            margin: const EdgeInsets.only(left: 20, right: 20),
             alignment: Alignment.topLeft,
             child: Text(date, 
             style: const TextStyle(
               fontSize: fontSize16,
               color: CustomColors.textColor,
-              height: 1.5,
+              height:1.5,
             ),
             ),
           ),

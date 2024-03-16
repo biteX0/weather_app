@@ -30,10 +30,13 @@ class CurrentWeatherWidget extends StatelessWidget {
         ),
         Text(
           weatherDataCurrent.weatherInfo.description,
-          style: const TextStyle(color: CustomColors.textColor),
+          style: const TextStyle(
+              color: CustomColors.textColor,
+              fontSize: fontSize27,
+              fontWeight: FontWeight.w500),
         ),
         const SizedBox(
-          height:20,
+          height: 20,
         ),
         Text(
           "${weatherDataCurrent.main.temp!.toInt()}°",
@@ -88,7 +91,7 @@ class CurrentWeatherWidget extends StatelessWidget {
               height: 20,
               width: 60,
               child: Text(
-                "${weatherDataCurrent.windSpeed.speed} m/s",
+                "${weatherDataCurrent.windSpeed.speed} м/с",
                 style: const TextStyle(color: CustomColors.textColor),
                 textAlign: TextAlign.center,
               ),
@@ -106,7 +109,7 @@ class CurrentWeatherWidget extends StatelessWidget {
               height: 20,
               width: 65,
               child: Text(
-                "${weatherDataCurrent.main.pressure} hPa",
+                "${weatherDataCurrent.main.pressure} гПа",
                 style: const TextStyle(color: CustomColors.textColor),
                 textAlign: TextAlign.center,
               ),

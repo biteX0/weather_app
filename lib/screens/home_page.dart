@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/services/get_location.dart';
 import 'package:weather_app/ui/custom_colors.dart';
+import 'package:weather_app/widgets/app_bar_button.dart';
 import 'package:weather_app/widgets/comfort_level.dart';
 import 'package:weather_app/widgets/current_waether.dart';
 import 'package:weather_app/widgets/geolocation_widget.dart';
@@ -23,6 +24,10 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: CustomColors.backgroundColor,
       body: Container(
         decoration: const BoxDecoration(
+          // image: DecorationImage(
+          // image: AssetImage("assets/background_image.jpg"),
+          // fit: BoxFit.cover,
+          // ),
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -58,6 +63,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(
                         height: 20,
                       ),
+                      const AppBarButton(),
                       const HeaderWidget(),
                       CurrentWeatherWidget(
                         weatherDataCurrent:

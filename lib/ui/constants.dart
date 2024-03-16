@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 
   const apiKey = "37279a3be9eb5678a378e453112f694d";
+  const langRu = "ru";
 
   const double fontSize16 = 16;
   const double fontSize20 = 20;

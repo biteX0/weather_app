@@ -41,7 +41,7 @@ class Wind {
   Wind({required this.speed});
 
   factory Wind.fromJson(Map<String, dynamic> json) {
-    final speed = (json['speed']as num?)?.toDouble();
+    final speed = (json['speed']as num?)?.toInt();
     return Wind(speed: speed);
   }
 }
@@ -52,7 +52,7 @@ class CloudsAll {
   CloudsAll({required this.cloudsAll});
 
   factory CloudsAll.fromJson(Map<String, dynamic> json) {
-    final cloudsAll = (json['all']as num?)?.toDouble();
+    final cloudsAll = (json['all']as num?)?.toInt();
     return CloudsAll(cloudsAll: cloudsAll);
   }
 }
