@@ -10,3 +10,17 @@ class CustomColors {
   static const Color secondBackgroundColor = Color.fromARGB(238, 46, 62, 109);
   static const Color backgroundColor = Color.fromARGB(232, 7, 23, 53);
 }
+
+const boxDecorationBackground = BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: [
+                0.2,
+                0.7
+              ],
+              colors: [
+                CustomColors.firstBackgroundColor,
+                CustomColors.secondBackgroundColor
+              ]),
+        );

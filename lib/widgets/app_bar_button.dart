@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/ui/custom_colors.dart';
-import 'package:weather_app/widgets/main_information_widget.dart';
+import 'package:weather_app/screens/city_screen.dart';
 
 class AppBarButton extends StatelessWidget {
   const AppBarButton({super.key});
@@ -17,14 +16,14 @@ class AppBarButton extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () {
-              Get.to(const MainInformation());
+              Get.to(const CityScreen());
             },
             icon: const ImageIcon(AssetImage("assets/pin.png")),
             color: CustomColors.cardColor,
           ),
           IconButton(
             onPressed: () {
-              Get.to(());
+              Get.back();
             },
             icon: const ImageIcon(AssetImage("assets/menu.png")),
             color: CustomColors.cardColor,
